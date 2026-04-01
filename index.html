@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarot Online Của Tôi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="container">
+        <h1>Dự Đoán Tarot Hằng Ngày</h1>
+        <p>Hãy tập trung tư tưởng và nhấn vào lá bài bên dưới</p>
+        
+        <div id="card-display" class="card-area">
+            <img src="images/back-card.png" id="tarot-card" alt="Tarot Card">
+        </div>
+
+        <div id="result" class="result-box">
+            <h2 id="card-name">Tên lá bài</h2>
+            <p id="card-meaning">Ý nghĩa sẽ xuất hiện ở đây...</p>
+        </div>
+
+        <button onclick="drawCard()">Rút Bài</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
