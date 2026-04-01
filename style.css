@@ -1,57 +1,102 @@
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    /* THAY ẢNH NỀN Ở ĐÂY */
-    background-image: url('https://images.unsplash.com/photo-1501004318641-729e8e26bd05?q=80&w=1974&auto=format&fit=crop');
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
+:root {
+    --bg: #0a0816;
+    --card: #1a1631;
+    --gold: #f5c242;
+    --text: #e0d8f0;
 }
 
-.overlay {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* Làm tối nền để nổi bật nội dung */
-    z-index: 1;
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    text-align: center;
 }
 
 .container {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 30px;
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-.card-area img {
-    width: 200px;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-    transition: transform 0.6s;
-    cursor: pointer;
+/* Header fix lỗi ẩn khúc trên */
+header {
+    background: var(--bg);
+    border-bottom: 1px solid var(--gold);
+    padding: 20px 0;
+    position: sticky; /* Dùng sticky thay vì fixed để không bị đè nội dung */
+    top: 0;
+    z-index: 1000;
 }
 
-button {
-    margin-top: 20px;
-    padding: 10px 25px;
-    background: #ffd700;
-    border: none;
-    border-radius: 5px;
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text);
     font-weight: bold;
     cursor: pointer;
 }
 
-.result-box {
+nav a.active { color: var(--gold); border-bottom: 2px solid var(--gold); }
+
+/* Layout Section */
+.page-section {
+    display: none;
+    padding: 40px 0;
+    min-height: 70vh;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page-section.active { display: flex; }
+
+/* Bài viết & Cards */
+.posts-grid { width: 100%; display: grid; gap: 20px; }
+.post-item { background: var(--card); padding: 20px; border-radius: 10px; border: 1px solid transparent; }
+.post-item:hover { border-color: var(--gold); }
+
+/* Trải bài & Ảnh lá bài */
+.card-display {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.card-item {
+    background: var(--card);
+    padding: 15px;
+    border-radius: 10px;
+    width: 200px;
+    border: 1px solid var(--gold);
+}
+
+.tarot-img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
+
+/* Buttons */
+.btn-gold { background: var(--gold); border: none; padding: 10px 25px; font-weight: bold; cursor: pointer; border-radius: 5px; }
+.btn-outline { background: none; border: 2px solid var(--gold); color: var(--gold); padding: 10px 20px; margin: 5px; cursor: pointer; border-radius: 20px; }
+.btn-outline:hover { background: var(--gold); color: var(--bg); }
+
+.daily-draw-box, .spread-box, .contact-card {
+    background: var(--card);
+    padding: 30px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 800px;
     margin-top: 20px;
-    display: none; /* Ẩn khi chưa rút bài */
 }
