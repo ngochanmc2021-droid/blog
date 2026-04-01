@@ -1,23 +1,59 @@
-const cards = [
-    { name: "The Fool", meaning: "Sự khởi đầu mới, tự do, ngây thơ.", image: "images/fool.png" },
-    { name: "The Magician", meaning: "Sức mạnh ý chí, khả năng, hành động.", image: "images/magician.png" },
-    // Thêm danh sách 78 lá bài của bạn vào đây
+// Danh sách 78 lá bài (Bạn có thể thêm đầy đủ vào đây)
+const tarotDeck = [
+    { id: 'the-fool', name: 'Chàng Khờ' },
+    { id: 'the-magician', name: 'Nhà Ảo Thuật' },
+    { id: 'the-high-priestess', name: 'Nữ Tư Tế' },
+    { id: 'the-empress', name: 'Nữ Hoàng' },
+    { id: 'the-emperor', name: 'Hoàng Đế' },
+    // ... Thêm tiếp cho đủ 78 lá
 ];
 
-function drawCard() {
-    const randomIndex = Math.floor(Math.random() * cards.length);
-    const selectedCard = cards[randomIndex];
+// Logic chuyển trang SPA
+function showSection(sectionId) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+    
+    document.getElementById(sectionId).classList.add('active');
+    document.getElementById('nav-' + sectionId).classList.add('active');
+    window.scrollTo(0,0);
+}
 
-    // Hiệu ứng lật bài đơn giản
-    const cardImg = document.getElementById('tarot-card');
-    cardImg.style.transform = "rotateY(180deg)";
+// Rút 1 lá nhanh tại trang chủ
+function drawQuickCard() {
+    const resultDiv = document.getElementById('quick-result');
+    const randomCard = tarotDeck[Math.floor(Math.random() * tarotDeck.length)];
+    
+    // Đường dẫn ảnh: images/tên-id.jpg
+    const imgPath = `images/${randomCard.id}.jpg`;
+    
+    resultDiv.innerHTML = `
+        <div class="card-item">
+            <img src="${imgPath}" class="card-img" alt="${randomCard.name}" onerror="this.src='https://placehold.co/200x350?text=Card+Image'">
+            <p><strong>${randomCard.name}</strong></p>
+        </div>
+    `;
+}
 
+// Rút trải bài 3 lá
+function drawSpread(topic) {
+    const spreadDiv = document.getElementById('spread-result');
+    spreadDiv.innerHTML = "Đang kết nối năng lượng...";
+    
     setTimeout(() => {
-        cardImg.src = selectedCard.image;
-        cardImg.style.transform = "rotateY(0deg)";
+        let shuffled = [...tarotDeck].sort(() => 0.5 - Math.random());
+        let selected = shuffled.slice(0, 3);
         
-        document.getElementById('result').style.display = "block";
-        document.getElementById('card-name').innerText = selectedCard.name;
-        document.getElementById('card-meaning').innerText = selectedCard.meaning;
-    }, 300);
+        spreadDiv.innerHTML = `<h3>Chủ đề: ${topic}</h3><div class="result-display"></div>`;
+        const innerDiv = spreadDiv.querySelector('.result-display');
+        
+        selected.forEach((card, i) => {
+            innerDiv.innerHTML += `
+                <div class="card-item">
+                    <p><small>Lá ${i+1}</small></p>
+                    <img src="images/${card.id}.jpg" class="card-img" onerror="this.src='https://placehold.co/200x350?text=Card+Image'">
+                    <p><strong>${card.name}</strong></p>
+                </div>
+            `;
+        });
+    }, 500);
 }
