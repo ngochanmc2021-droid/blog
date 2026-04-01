@@ -1,4 +1,4 @@
-// Danh sách 78 lá bài với ID tương ứng kho ảnh trực tuyến
+// Danh sách 22 lá bài Ẩn Chính (Major Arcana)
 const tarotDeck = [
     { id: 0, name: 'The Fool', vi: 'Chàng Khờ' },
     { id: 1, name: 'The Magician', vi: 'Nhà Ảo Thuật' },
@@ -22,28 +22,22 @@ const tarotDeck = [
     { id: 19, name: 'The Sun', vi: 'Mặt Trời' },
     { id: 20, name: 'Judgement', vi: 'Phán Xét' },
     { id: 21, name: 'The World', vi: 'Thế Giới' }
-    // ... bạn có thể thêm các lá Ẩn phụ nếu muốn, logic vẫn tương tự
 ];
 
-// Link gốc kho ảnh Tarot chuẩn (Rider-Waite)
-const IMG_BASE_URL = "https://raw.githubusercontent.com/the-fortuna-project/tarot-api/master/static/cards/";
+// Link kho ảnh Tarot mới ổn định hơn
+const IMG_BASE_URL = "https://raw.githubusercontent.com/ekelen/tarot-api/master/static/cards/";
 
-// Logic chuyển trang SPA
 function showSection(sectionId) {
     document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
     document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-    
     document.getElementById(sectionId).classList.add('active');
     document.getElementById('nav-' + sectionId).classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Rút 1 lá nhanh (Trang chủ)
 function drawQuickCard() {
     const resultArea = document.getElementById('quick-result');
     const randomCard = tarotDeck[Math.floor(Math.random() * tarotDeck.length)];
-    
-    // Tự động tạo link ảnh dựa trên ID (m00.jpg, m01.jpg...)
     const cardImgId = randomCard.id < 10 ? `m0${randomCard.id}` : `m${randomCard.id}`;
     const imgUrl = `${IMG_BASE_URL}${cardImgId}.jpg`;
 
@@ -55,7 +49,6 @@ function drawQuickCard() {
     `;
 }
 
-// Rút trải bài 3 lá
 function drawSpread(topic) {
     const resultArea = document.getElementById('spread-result');
     resultArea.innerHTML = "<p>Đang xào bài...</p>";
@@ -64,9 +57,15 @@ function drawSpread(topic) {
         let shuffled = [...tarotDeck].sort(() => 0.5 - Math.random());
         let selected = shuffled.slice(0, 3);
         
-        resultArea.innerHTML = `<h3>Thông điệp về: ${topic}</h3><div class="result-area"></div>`;
-        const container = resultArea.querySelector('.result-area');
-
+        // Cấu trúc HTML mới giúp tiêu đề căn giữa
+        resultArea.innerHTML = `
+            <div class="result-header">
+                <h3>Thông điệp về: ${topic}</h3>
+            </div>
+            <div class="result-grid"></div>
+        `;
+        
+        const container = resultArea.querySelector('.result-grid');
         selected.forEach((card, i) => {
             const cardImgId = card.id < 10 ? `m0${card.id}` : `m${card.id}`;
             const imgUrl = `${IMG_BASE_URL}${cardImgId}.jpg`;
