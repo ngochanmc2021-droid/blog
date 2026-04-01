@@ -3,80 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mystic Tarot Blog</title>
+    <title>Mystic Tarot - Hành Trình Tâm Linh</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
-        <div class="logo">🔮 MYSTIC TAROT</div>
-        <nav>
-            <a href="javascript:void(0)" onclick="showSection('home')" id="nav-home" class="active">Trang chủ</a>
-            <a href="javascript:void(0)" onclick="showSection('articles')" id="nav-articles">Bài viết</a>
-            <a href="javascript:void(0)" onclick="showSection('spreads')" id="nav-spreads">Trải bài</a>
-            <a href="javascript:void(0)" onclick="showSection('contact')" id="nav-contact">Liên hệ</a>
-        </nav>
+        <div class="header-container">
+            <div class="logo" onclick="showSection('home')">🔮 MYSTIC TAROT</div>
+            <nav>
+                <a href="javascript:void(0)" onclick="showSection('home')" id="nav-home" class="active">Trang chủ</a>
+                <a href="javascript:void(0)" onclick="showSection('articles')" id="nav-articles">Bài viết</a>
+                <a href="javascript:void(0)" onclick="showSection('spreads')" id="nav-spreads">Trải bài</a>
+                <a href="javascript:void(0)" onclick="showSection('contact')" id="nav-contact">Liên hệ</a>
+            </nav>
+        </div>
     </header>
 
-    <main id="main-content">
+    <main>
         <section id="home" class="section active">
             <div class="hero">
                 <h1>Chào mừng bạn đến với Cõi Huyền Bí</h1>
-                <p>Nơi khám phá những thông điệp từ vũ trụ thông qua các lá bài Tarot.</p>
+                <p>Khám phá thông điệp từ vũ trụ dành cho bạn hôm nay.</p>
             </div>
 
-            <div class="daily-reading">
-                <div class="reading-box">
-                    <h2>✨ Xem Tarot Nhanh Trong Ngày ✨</h2>
-                    <p>Hít thở sâu, tập trung vào năng lượng hiện tại và rút một lá bài cho hôm nay.</p>
-                    <button class="btn-gold" onclick="drawQuickCard()">Rút Bài Ngay</button>
-                    <div id="quick-result" class="result-display">
-                        </div>
-                </div>
+            <div class="daily-reading-box">
+                <h2>✨ Thông Điệp Trong Ngày ✨</h2>
+                <p>Hít thở sâu và nhấn nút để nhận thông điệp nhanh.</p>
+                <button class="btn-gold" onclick="drawQuickCard()">Rút Bài Ngay</button>
+                <div id="quick-result" class="result-area">
+                    </div>
             </div>
         </section>
 
         <section id="articles" class="section">
-            <h2>Bài viết mới nhất</h2>
-            <div class="posts-grid">
-                <article class="post-card">
+            <h2>Bài Viết Mới Nhất</h2>
+            <div class="grid-container" id="article-list">
+                <div class="card-item-box">
                     <h3>Hành trình của The Fool</h3>
-                    <p>Khám phá bước chân đầu tiên của gã khờ trong bộ Ẩn Chính...</p>
+                    <p>Khám phá ý nghĩa của lá bài số 0 trong bộ Ẩn chính...</p>
                     <button class="btn-read">Đọc tiếp</button>
-                </article>
-                <article class="post-card">
-                    <h3>Ý nghĩa bộ Cup trong Tình yêu</h3>
-                    <p>Cảm xúc và sự kết nối được thể hiện như thế nào qua các lá bài Chén...</p>
+                </div>
+                <div class="card-item-box">
+                    <h3>Sức mạnh của bộ Cup</h3>
+                    <p>Khi cảm xúc và trực giác dẫn lối cho trái tim bạn...</p>
                     <button class="btn-read">Đọc tiếp</button>
-                </article>
+                </div>
             </div>
         </section>
 
         <section id="spreads" class="section">
-            <h2>Trải bài Tarot 3 lá</h2>
-            <div class="spread-selector">
+            <h2>Trải Bài Tarot 3 Lá</h2>
+            <p>Chọn chủ đề bạn đang băn khoăn:</p>
+            <div class="selector-buttons">
                 <button class="btn-outline" onclick="drawSpread('Tình yêu')">Tình yêu</button>
                 <button class="btn-outline" onclick="drawSpread('Gia đình')">Gia đình</button>
                 <button class="btn-outline" onclick="drawSpread('Sự nghiệp')">Sự nghiệp</button>
             </div>
-            <div id="spread-result" class="spread-display">
+            <div id="spread-result" class="result-area">
                 </div>
         </section>
 
         <section id="contact" class="section">
             <div class="contact-card">
                 <h2>KẾT NỐI VỚI READER</h2>
-                <div class="contact-info">
+                <div class="contact-details">
                     <p>📧 Email: <strong>booking@mystictarot.vn</strong></p>
                     <p>📞 Zalo/SĐT: <strong>0987.654.321</strong></p>
-                    <p>📍 Địa chỉ: <strong>Không gian vũ trụ, Trái Đất</strong></p>
+                    <p>📍 Địa chỉ: <strong>Hà Nội, Việt Nam</strong></p>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Mystic Tarot Blog. Năng lượng bình an gửi đến bạn.</p>
+        <p>&copy; 2026 Mystic Tarot Blog. Chúc bạn một ngày bình an.</p>
     </footer>
 
     <script src="script.js"></script>
