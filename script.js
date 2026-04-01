@@ -28,7 +28,7 @@ function drawQuickCard() {
     
     resultDiv.innerHTML = `
         <div class="card-item">
-            <img src="${imgPath}" class="card-img" alt="${randomCard.name}" onerror="this.src='https://www.nghethuatbep.com/y-nghia-78-la-bai-tarot'">
+            <img src="${imgPath}" class="card-img" alt="${randomCard.name}" onerror="this.src='https://placehold.co/200x350?text=Card+Image'">
             <p><strong>${randomCard.name}</strong></p>
         </div>
     `;
