@@ -4,7 +4,7 @@
     --card-bg: #1a1631;
     --gold: #f5c242;
     --text: #e0d8f0;
-    --header-h: 80px;
+    --header-h: 120px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
