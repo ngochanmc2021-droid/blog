@@ -1,78 +1,83 @@
-/* Reset & Biến màu */
 :root {
-    --bg-dark: #0a0816;
+    --bg: #0a0816;
     --card-bg: #1a1631;
     --gold: #f5c242;
     --text: #e0d8f0;
-    --header-h: 120px;
+    --header-height: 100px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: var(--bg-dark);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: var(--bg);
     color: var(--text);
+    text-align: center;
     line-height: 1.6;
-    text-align: center; /* Căn giữa văn bản */
 }
 
-/* Header cố định */
+/* Header & Nav - Sửa lỗi che nội dung */
 header {
     background: rgba(10, 8, 22, 0.98);
-    height: var(--header-h);
     position: fixed;
     top: 0; width: 100%;
+    height: var(--header-height);
     z-index: 1000;
     border-bottom: 1px solid var(--gold);
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 
-.logo { color: var(--gold); font-weight: bold; font-size: 1.2rem; margin-bottom: 5px; }
+.header-container { display: flex; flex-direction: column; gap: 10px; }
+
+.logo { color: var(--gold); font-weight: bold; font-size: 1.5rem; cursor: pointer; letter-spacing: 2px; }
 
 nav a {
     color: var(--text);
     text-decoration: none;
     margin: 0 15px;
-    font-size: 0.9rem;
     font-weight: 500;
+    font-size: 0.9rem;
+    transition: 0.3s;
 }
 
-nav a.active { color: var(--gold); border-bottom: 2px solid var(--gold); }
+nav a:hover, nav a.active { color: var(--gold); border-bottom: 2px solid var(--gold); }
 
-/* Nội dung chính - Sửa lỗi che chữ */
+/* Main Content: Padding-top để không bị che */
 main {
-    padding-top: calc(var(--header-h) + 40px); /* Đẩy nội dung xuống dưới header */
-    min-height: 85vh;
+    padding-top: calc(var(--header-height) + 50px);
+    padding-bottom: 50px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    min-height: 90vh;
 }
 
 .section {
-    display: none; /* Ẩn mặc định để làm SPA */
+    display: none;
+    width: 90%;
+    max-width: 1000px;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    max-width: 1000px;
-    padding: 20px;
 }
 
-.section.active { display: flex; }
+.section.active { display: flex; animation: fadeIn 0.5s; }
 
-/* Thẻ bài & Kết quả */
-.reading-box, .contact-card {
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Boxes & Cards */
+.daily-reading-box, .contact-card, .card-item-box {
     background: var(--card-bg);
-    padding: 40px;
-    border-radius: 15px;
-    border: 1px solid rgba(245, 194, 66, 0.3);
-    max-width: 600px;
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(245, 194, 66, 0.2);
     width: 100%;
+    max-width: 600px;
+    margin-top: 20px;
 }
 
-.result-display, .spread-display {
+.result-area {
     margin-top: 30px;
     display: flex;
     justify-content: center;
@@ -80,34 +85,36 @@ main {
     flex-wrap: wrap;
 }
 
-.card-item {
-    width: 180px;
+/* Ảnh lá bài - Tự động co giãn */
+.tarot-card {
+    width: 200px;
     text-align: center;
+    animation: cardReveal 0.8s ease-out;
 }
 
-.card-img {
+.tarot-card img {
     width: 100%;
     border-radius: 10px;
     border: 2px solid var(--gold);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-    margin-bottom: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
 }
 
-/* Nút bấm */
+@keyframes cardReveal { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+/* Buttons */
 .btn-gold {
-    background: var(--gold);
-    color: var(--bg-dark);
-    border: none; padding: 12px 25px;
-    font-weight: bold; cursor: pointer;
-    border-radius: 5px; transition: 0.3s;
+    background: var(--gold); color: #000;
+    border: none; padding: 12px 30px;
+    font-weight: bold; border-radius: 50px;
+    cursor: pointer; margin-top: 20px; transition: 0.3s;
 }
+
+.btn-gold:hover { transform: scale(1.05); box-shadow: 0 0 15px var(--gold); }
 
 .btn-outline {
-    background: none;
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    padding: 10px 20px; margin: 5px;
-    cursor: pointer; border-radius: 20px;
+    background: none; border: 1px solid var(--gold);
+    color: var(--gold); padding: 10px 20px;
+    border-radius: 20px; cursor: pointer; margin: 10px;
 }
 
-footer { padding: 40px; opacity: 0.6; font-size: 0.8rem; }
+footer { margin-top: auto; padding: 40px; opacity: 0.5; font-size: 0.8rem; }
