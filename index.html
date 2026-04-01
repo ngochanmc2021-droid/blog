@@ -3,26 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarot Online Của Tôi</title>
+    <title>Mystic Tarot Blog</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="overlay"></div>
-    <div class="container">
-        <h1>Dự Đoán Tarot Hằng Ngày</h1>
-        <p>Hãy tập trung tư tưởng và nhấn vào lá bài bên dưới</p>
-        
-        <div id="card-display" class="card-area">
-            <img src="images/back-card.png" id="tarot-card" alt="Tarot Card">
-        </div>
 
-        <div id="result" class="result-box">
-            <h2 id="card-name">Tên lá bài</h2>
-            <p id="card-meaning">Ý nghĩa sẽ xuất hiện ở đây...</p>
+    <header>
+        <div class="container header-content">
+            <div class="logo">🔮 MYSTIC TAROT</div>
+            <nav>
+                <ul>
+                    <li><a onclick="navigate('trang-chu')" id="nav-trang-chu" class="active">Trang chủ</a></li>
+                    <li><a onclick="navigate('bai-viet')" id="nav-bai-viet">Bài viết</a></li>
+                    <li><a onclick="navigate('trai-bai')" id="nav-trai-bai">Trải bài</a></li>
+                    <li><a onclick="navigate('lien-he')" id="nav-lien-he">Liên hệ</a></li>
+                </ul>
+            </nav>
         </div>
+    </header>
 
-        <button onclick="drawCard()">Rút Bài</button>
-    </div>
+    <main class="container">
+        <section id="trang-chu" class="page-section active">
+            <div class="hero">
+                <h2>Tarot là gì?</h2>
+                <p>Tarot là một hệ thống gồm 78 lá bài với những hình ảnh biểu tượng đầy chiều sâu, giúp chúng ta kết nối với trực giác và thấu hiểu những thông điệp từ vũ trụ. Nó không chỉ là bói toán, mà là một tấm gương phản chiếu tâm hồn.</p>
+                
+                <div class="daily-draw-box">
+                    <h3>✨ Thông Điệp Trong Ngày ✨</h3>
+                    <p>Hít thở sâu và nhấn nút để nhận thông điệp ngẫu nhiên.</p>
+                    <button class="btn-gold" onclick="drawDaily()">Rút Bài Ngay</button>
+                    <div id="daily-result" class="card-display"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="bai-viet" class="page-section">
+            <h2>Bài viết mới nhất</h2>
+            <div class="posts-grid" id="posts-container"></div>
+        </section>
+
+        <section id="trai-bai" class="page-section">
+            <div class="spread-box">
+                <h2>Trải bài Tarot chuyên sâu</h2>
+                <div class="subject-selector">
+                    <button class="btn-outline" onclick="setSpread('tinh-yeu')">Tình yêu</button>
+                    <button class="btn-outline" onclick="setSpread('gia-dinh')">Gia đình</button>
+                    <button class="btn-outline" onclick="setSpread('su-nghiep')">Sự nghiệp</button>
+                </div>
+                <div id="spread-result" class="card-display"></div>
+            </div>
+        </section>
+
+        <section id="lien-he" class="page-section">
+            <div class="contact-card">
+                <h2>Kết nối với Reader</h2>
+                <div class="contact-info">
+                    <p>📧 Email: booking@mystictarot.vn</p>
+                    <p>📞 Zalo/SĐT: 0987.654.321</p>
+                    <p>📍 Địa chỉ: Không gian vũ trụ, Trái Đất</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Mystic Tarot Blog. Năng lượng bình an gửi đến bạn.</p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
