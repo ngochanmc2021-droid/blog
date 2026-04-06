@@ -20,17 +20,15 @@ function showSection(sectionId) {
 }
 
 // Rút 1 lá nhanh (Trang chủ)
+// Ví dụ cho hàm rút bài nhanh
 function drawQuickCard() {
     const resultArea = document.getElementById('quick-result');
     const randomCard = tarotDeck[Math.floor(Math.random() * tarotDeck.length)];
     
-    // Tự động tạo link ảnh dựa trên ID (m00.jpg, m01.jpg...)
-    const cardImgId = randomCard.id < 10 ? `m0${randomCard.id}` : `m${randomCard.id}`;
-    const imgUrl = `${IMG_BASE_URL}${cardImgId}.jpg`;
-
+    // Sử dụng trực tiếp randomCard.image
     resultArea.innerHTML = `
         <div class="tarot-card">
-            <img src="${imgUrl}" alt="${randomCard.name}">
+            <img src="${randomCard.image}" alt="${randomCard.name}">
             <p style="margin-top:10px; color:var(--gold); font-weight:bold;">${randomCard.vi}</p>
         </div>
     `;
